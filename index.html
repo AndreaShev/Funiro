@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funiro</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="css/adaptive-style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header_wrapper">
+          <div class="header_container _container">
+            <div class="header_body">
+              <div class="header_main">
+                <a href="" class="header_logo">Funiro</a>
+                <div class="header_menu menu">
+                  <nav class="menu_body">
+                    <ul data-spollers="768,max" class="menu_list">
+                      <li class="menu_item">
+                        <a
+                          data-goto=".page_section_1"
+                          href="#"
+                          class="menu_link"
+                          >Products</a
+                        >
+                        <button
+                          data-spoller
+                          type="submit"
+                          class="menu_arrow _icon-arrow-down"
+                        ></button>
+                        <ul class="menu_sub-list">
+                          <li class="menu_sub-item">
+                            <a href="" class="menu_sub-link">Product #1</a>
+                          </li>
+                          <li class="menu_sub-item">
+                            <a href="" class="menu_sub-link">Product #2</a>
+                          </li>
+                          <li class="menu_sub-item">
+                            <a href="" class="menu_sub-link">Product #3</a>
+                          </li>
+                          <li class="menu_sub-item">
+                            <a href="" class="menu_sub-link">Product #4</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="menu_item">
+                        <a data-goto=".page_section_2" href="" class="menu_link"
+                          >Rooms</a
+                        >
+                        <!-- стрелка -->
+                        <button
+                          data-spoller
+                          type="submit"
+                          class="menu_arrow _icon-arrow-down"
+                        ></button>
+                        <!-- подменю -->
+                        <ul class="menu_sub-list">
+                          <li class="menu_sub-item">
+                            <a href="" class="menu_sub-link">Room#1</a>
+                          </li>
+                          <li class="menu_sub-item">
+                            <a href="" class="menu_sub-link">Room #2</a>
+                          </li>
+                          <li class="menu_sub-item">
+                            <a href="" class="menu_sub-link">Room #3</a>
+                          </li>
+                          <li class="menu_sub-item">
+                            <a href="" class="menu_sub-link">Room #4</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="menu_item">
+                        <a data-goto=".page_section_3" href="" class="menu_link"
+                          >Inapirations</a
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="header_search">
+                <div class="search-form">
+                  <button
+                    type="button"
+                    class="search-form_icon _icon-search"
+                  ></button>
+                  <form action="#" class="search-form_item">
+                    <button
+                      type="submit"
+                      class="search-form_btn _icon-search"
+                    ></button>
+                    <input
+                      autocomplete="off"
+                      type="text"
+                      name="form[]"
+                      data-value="Search for minimalist chair"
+                      class="search-form_input"
+                    />
+                  </form>
+                </div>
+              </div>
+              <div class="header_actions actions-header">
+                <a
+                  href="#"
+                  class="actions-header_item actions-header_item_favorites _icon-favorite"
+                ></a>
+                <!-- корзина -->
+                <div class="actions-header_item cart-header">
+                  <a href="" class="cart-header_icon _icon-cart">
+                    <!-- <span>1</span> (ручная проверка на добавлене товара в козину)-->
+                  </a>
+                  <div class="cart-header_body">
+                    <ul class="cart-header_list cart-list"></ul>
+                  </div>
+                </div>
+                <a
+                  href=""
+                  class="actions-header_item actions-header_item_user _ibg"
+                >
+                  <img src="img/avatar.jpg" alt="Avatar" />
+                </a>
+              </div>
+              <button type="button" class="icon-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="page">
+        <!-- тест плавной прокрутки
+<section class="page_section page_section_1">
+<h1 class="page_title">great post</h1>
+<div class="page_text">
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+
+</div>
+
+
+		</section>
+
+		<section class="page_section page_section_2">
+<h2 class="page_sub-title">great paragraph</h2>
+<div class="page_text">
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+
+</div>
+
+
+		</section>
+
+		<section class="page_section page_section_3">
+<h2 class="page_sub-title">great paragraph</h2>
+<div class="page_text">
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p><p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p></p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Inventore optio odit, beatae? Modi repudiandae repellendus, suscipit animi nobis obcaecati eveniet ipsa, dicta sit? Provident molestiae sint vitae ipsa consequatur odio.</p>
+
+</div>
+		</section>
+-->
+        <section class="page_main-slider main-slider">
+          <div class="main-slider_container _container">
+            <div class="main-slider_body">
+              <div class="main-slider_content content-main">
+                <h1 class="content-main_title">
+                  High-quality furniture just for you
+                </h1>
+                <div class="content-main_text">
+                  our furniture is made from selected and best quality materials
+                  that are sutable for your dream home
+                </div>
+                <a
+                  href=""
+                  data-da=".main-slider_body,991.98"
+                  class="content-main_button btn"
+                  >Shop Now</a
+                >
+              </div>
+              <div class="main-slider_slider slider-main">
+                <div class="slider-main_controls controls-slider-main">
+                  <div class="controls-slider-main_dotts"></div>
+                  <div class="controls-slider-main_arrows slider-arrows">
+                    <button
+                      type="button"
+                      class="slider-arrow slider-arrow_prev _icon-arrow-down"
+                    ></button
+                    ><!-- swiper-button-prev добавил-->
+                    <button
+                      type="button"
+                      class="slider-arrow slider-arrow_next _icon-arrow-down"
+                    ></button
+                    ><!-- swiper-button-next добавил -->
+                  </div>
+                </div>
+
+                <div class="slider-main_body _swiper swiper-container">
+                  <div class="slider-main_wrapper swiper-wrapper">
+                    <div class="slider-main_slide swiper-slide">
+                      <div class="slider-main_image _ibg">
+                        <img src="img/main-slider/01.jpg" alt="Image" />
+                      </div>
+                      <a
+                        href=""
+                        data-swiper-parallax-opacity="0"
+                        daya-swiper-parallax-x="-100%"
+                        class="slider-main_content"
+                      >
+                        <div class="slider-main_title">Bohaus</div>
+                        <div class="slider-main_text">
+                          Luxury big sofa 2-seat
+                        </div>
+                        <div class="slider-main_price _icon-arrow-link">
+                          Rp 17.000.000
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="slider-main_slide swiper-slide">
+                      <div class="slider-main_image _ibg">
+                        <img src="img/main-slider/02.jpg" alt="Image" />
+                      </div>
+                      <a
+                        href=""
+                        data-swiper-parallax-opacity="0"
+                        daya-swiper-parallax-x="-100%"
+                        class="slider-main_content"
+                      >
+                        <div class="slider-main_title">Bohaus</div>
+                        <div class="slider-main_text">
+                          Luxury big sofa 2-seat
+                        </div>
+                        <div class="slider-main_price _icon-arrow-link">
+                          Rp 17.000.000
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="slider-main_slide swiper-slide">
+                      <div class="slider-main_image _ibg">
+                        <img src="img/main-slider/03.jpg" alt="Image" />
+                      </div>
+                      <a
+                        href=""
+                        data-swiper-parallax-opacity="0"
+                        daya-swiper-parallax-x="-100%"
+                        class="slider-main_content"
+                      >
+                        <div class="slider-main_title">Bohaus</div>
+                        <div class="slider-main_text">
+                          Luxury big sofa 2-seat
+                        </div>
+                        <div class="slider-main_price _icon-arrow-link">
+                          Rp 17.000.000
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page_advantages advantages">
+          <div class="advantages_container _container">
+            <div class="advantages_item">
+              <div class="advantages_icon">
+                <img src="img/advantages/01.svg" alt="Image" />
+              </div>
+              <h3 class="advantages_title">High Quality</h3>
+              <div class="advantages_text">crafted from top materials</div>
+            </div>
+
+            <div class="advantages_item">
+              <div class="advantages_icon">
+                <img src="img/advantages/02.svg" alt="Image" />
+              </div>
+              <h3 class="advantages_title">High Quality</h3>
+              <div class="advantages_text">crafted from top materials</div>
+            </div>
+
+            <div class="advantages_item">
+              <div class="advantages_icon">
+                <img src="img/advantages/03.svg" alt="Image" />
+              </div>
+              <h3 class="advantages_title">High Quality</h3>
+              <div class="advantages_text">crafted from top materials</div>
+            </div>
+
+            <div class="advantages_item">
+              <div class="advantages_icon">
+                <img src="img/advantages/04.svg" alt="Image" />
+              </div>
+              <h3 class="advantages_title">High Quality</h3>
+              <div class="advantages_text">crafted from top materials</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page_products products">
+          <div class="products_container _container">
+            <h2 class="products_title _title">Our Products</h2>
+            <div class="products_items">
+              <article data-pid="1" class="products_item item-product">
+                <div class="item-product_labels">
+                  <div class="item-product_label item-product_label_sale">
+                    -30%
+                  </div>
+                  <div class="item-product_label item-product_label_new">
+                    New
+                  </div>
+                </div>
+                <a href="" class="item-product_image _ibg">
+                  <img src="img/products/01.jpg" alt="Image" />
+                </a>
+                <div class="item-product_body">
+                  <div class="item-product_content">
+                    <h5 class="item-product_title">Syltherine</h5>
+                    <div class="item-product_text">Stylish</div>
+                  </div>
+                  <div class="item-product_prices">
+                    <div class="item-product_price">Rp2500</div>
+                    <div class="item-product_price item-product_price_old">
+                      Rp 3500
+                    </div>
+                  </div>
+                  <div class="item-product_actions actions-product">
+                    <div class="actions-product_body">
+                      <a href="" class="actions-product_button btn btn_white"
+                        >Add to cart</a
+                      >
+                      <a href="" class="actions-product_link _icon-share"
+                        >Share</a
+                      >
+                      <a href="" class="actions-product_link _icon-favorite"
+                        >Like</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article data-pid="2" class="products_item item-product">
+                <div class="item-product_labels">
+                  <div class="item-product_label item-product_label_sale">
+                    -30%
+                  </div>
+                  <div class="item-product_label item-product_label_new">
+                    New
+                  </div>
+                </div>
+                <a href="" class="item-product_image _ibg">
+                  <img src="img/products/02.jpg" alt="Image" />
+                </a>
+                <div class="item-product_body">
+                  <div class="item-product_content">
+                    <h5 class="item-product_title">Leviosa</h5>
+                    <div class="item-product_text">Stylish</div>
+                  </div>
+                  <div class="item-product_prices">
+                    <div class="item-product_price">Rp2500</div>
+                    <div class="item-product_price item-product_price_old">
+                      Rp 3500
+                    </div>
+                  </div>
+                  <div class="item-product_actions actions-product">
+                    <div class="actions-product_body">
+                      <a href="" class="actions-product_button btn btn_white"
+                        >Add to cart</a
+                      >
+                      <a href="" class="actions-product_link _icon-share"
+                        >Share</a
+                      >
+                      <a href="" class="actions-product_link _icon-favorite"
+                        >Like</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article data-pid="3" class="products_item item-product">
+                <div class="item-product_labels">
+                  <div class="item-product_label item-product_label_sale">
+                    -30%
+                  </div>
+                  <div class="item-product_label item-product_label_new">
+                    New
+                  </div>
+                </div>
+                <a href="" class="item-product_image _ibg">
+                  <img src="img/products/03.jpg" alt="Image" />
+                </a>
+                <div class="item-product_body">
+                  <div class="item-product_content">
+                    <h5 class="item-product_title">Lolito</h5>
+                    <div class="item-product_text">Stylish</div>
+                  </div>
+                  <div class="item-product_prices">
+                    <div class="item-product_price">Rp2500</div>
+                    <div class="item-product_price item-product_price_old">
+                      Rp 3500
+                    </div>
+                  </div>
+                  <div class="item-product_actions actions-product">
+                    <div class="actions-product_body">
+                      <a href="" class="actions-product_button btn btn_white"
+                        >Add to cart</a
+                      >
+                      <a href="" class="actions-product_link _icon-share"
+                        >Share</a
+                      >
+                      <a href="" class="actions-product_link _icon-favorite"
+                        >Like</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article data-pid="4" class="products_item item-product">
+                <div class="item-product_labels">
+                  <div class="item-product_label item-product_label_sale">
+                    -30%
+                  </div>
+                  <div class="item-product_label item-product_label_new">
+                    New
+                  </div>
+                </div>
+                <a href="" class="item-product_image _ibg">
+                  <img src="img/products/04.jpg" alt="Image" />
+                </a>
+                <div class="item-product_body">
+                  <div class="item-product_content">
+                    <h5 class="item-product_title">Respira</h5>
+                    <div class="item-product_text">Stylish</div>
+                  </div>
+                  <div class="item-product_prices">
+                    <div class="item-product_price">Rp500</div>
+                    <div class="item-product_price item-product_price_old">
+                      Rp 3500
+                    </div>
+                  </div>
+                  <div class="item-product_actions actions-product">
+                    <div class="actions-product_body">
+                      <a href="" class="actions-product_button btn btn_white"
+                        >Add to cart</a
+                      >
+                      <a href="" class="actions-product_link _icon-share"
+                        >Share</a
+                      >
+                      <a href="" class="actions-product_link _icon-favorite"
+                        >Like</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="products_footer">
+              <a href="" class="products_more btn btn_white">Snow more</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="page_rooms rooms">
+          <div class="rooms_container _container">
+            <div class="rooms_body">
+              <h2 class="rooms_title _title">50 Beautiful rooms inspiration</h2>
+              <div class="rooms_text">
+                Our designer already made a lot of beautiful prototype of rooms
+                that inspire you
+              </div>
+              <a href="" class="rooms_button btn">Explore more</a>
+            </div>
+            <div class="rooms_slider slider-rooms">
+              <div class="slider-rooms_body _swiper swiper-container">
+                <div class="slider-rooms_wrapper swiper-wrapper">
+                  <!-- добавил чтобы слайдер инициализиовался-->
+                  <div class="slider-rooms_slide swiper-slide">
+                    <!--<div class="container">	</div>-->
+                    <div class="slider-rooms_image _ibg">
+                      <img src="img/rooms/01.jpg" alt="Image" />
+                    </div>
+                    <a
+                      href=""
+                      data-swiper-parallax-opacity="0"
+                      daya-swiper-parallax-y="-100%"
+                      class="slider-rooms_content _icon-arrow-link"
+                    >
+                      <div class="slider-rooms_label label-slider">
+                        <div class="label-slider_number">01</div>
+                        <div class="label-slider_line"></div>
+                        <div class="label-slider_text">Bed room</div>
+                      </div>
+                      <div class="slider-rooms_title">Inner Peace</div>
+                    </a>
+                  </div>
+
+                  <div class="slider-rooms_slide swiper-slide">
+                    <!--<div class="container">	</div>-->
+                    <div class="slider-rooms_image _ibg">
+                      <img src="img/rooms/02.jpg" alt="Image" />
+                    </div>
+                    <a
+                      href=""
+                      data-swiper-parallax-opacity="0"
+                      daya-swiper-parallax-y="-100%"
+                      class="slider-rooms_content _icon-arrow-link"
+                    >
+                      <div class="slider-rooms_label label-slider">
+                        <div class="label-slider_number">02</div>
+                        <div class="label-slider_line"></div>
+                        <div class="label-slider_text">Bed room</div>
+                      </div>
+                      <div class="slider-rooms_title">Inner Peace</div>
+                    </a>
+                  </div>
+
+                  <div class="slider-rooms_slide swiper-slide">
+                    <!--<div class="container">	</div>-->
+                    <div class="slider-rooms_image _ibg">
+                      <img src="img/rooms/03.jpg" alt="Image" />
+                    </div>
+                    <a
+                      href=""
+                      data-swiper-parallax-opacity="0"
+                      daya-swiper-parallax-y="-100%"
+                      class="slider-rooms_content _icon-arrow-link"
+                    >
+                      <div class="slider-rooms_label label-slider">
+                        <div class="label-slider_number">03</div>
+                        <div class="label-slider_line"></div>
+                        <div class="label-slider_text">Bed room</div>
+                      </div>
+                      <div class="slider-rooms_title">Inner Peace</div>
+                    </a>
+                  </div>
+                  <!--slider-rooms_slide-->
+                </div>
+                <!-- тут или на 440 поставить? внутрь обертки пихать стрелки в слайдере? посмотреть базовый стиль слайдера как у фрилансера вроде-->
+              </div>
+              <!--slider-rooms_body-->
+
+              <div class="slider-rooms_arrows slider-arrows">
+                <button
+                  type="button"
+                  class="slider-arrow slider-arrow_white slider-arrow_prev _icon-arrow-down"
+                ></button>
+                <button
+                  type="button"
+                  class="slider-arrow slider-arrow_white slider-arrow_next _icon-arrow-down"
+                ></button>
+              </div>
+              <div class="slider-rooms_dotts"></div>
+            </div>
+            <!--rooms_slider slider-rooms-->
+          </div>
+          <!--rooms_container _container-->
+        </section>
+
+        <section class="page_tips tips">
+          <div class="tips_container _container">
+            <h2 class="tips_title _title">Tips and Trics</h2>
+            <div class="tips_slider slider-tips">
+              <div class="slider-tips_body _swiper swiper-container">
+                <div class="slider-tips_wrapper swiper-wrapper">
+                  <div class="slider-tips_slide swiper-slide">
+                    <a href="" class="slider-tips_image _ibg">
+                      <img src="img/tips/01.jpg" alt="Image" />
+                    </a>
+                    <div class="slider-tips_content">
+                      <a href="" class="slider-tips_title"
+                        >How to create a living room to love</a
+                      >
+                      <div class="slider-tips_text">20 jan 2020</div>
+                    </div>
+                  </div>
+                  <div class="slider-tips_slide swiper-slide">
+                    <a href="" class="slider-tips_image _ibg">
+                      <img src="img/tips/02.jpg" alt="Image" />
+                    </a>
+                    <div class="slider-tips_content">
+                      <a href="" class="slider-tips_title"
+                        >How to create a living room to love</a
+                      >
+                      <div class="slider-tips_text">20 jan 2020</div>
+                    </div>
+                  </div>
+                  <div class="slider-tips_slide swiper-slide">
+                    <a href="" class="slider-tips_image _ibg">
+                      <img src="img/tips/03.jpg" alt="Image" />
+                    </a>
+                    <div class="slider-tips_content">
+                      <a href="" class="slider-tips_title"
+                        >How to create a living room to love</a
+                      >
+                      <div class="slider-tips_text">20 jan 2020</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-tips_dotts"></div>
+              <div class="slider-tips_arrows slider-arrows">
+                <button
+                  type="button"
+                  class="slider-arrow slider-arrow_white slider-arrow_prev _icon-arrow-down"
+                ></button>
+                <button
+                  type="button"
+                  class="slider-arrow slider-arrow_white slider-arrow_next _icon-arrow-down"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page_furniture furniture">
+          <div class="furniture_container">
+            <div class="furniture_label">Share your setup with</div>
+            <h2 class="furniture_title _title">#FuniroFurniture</h2>
+            <div data-speed="0.01" class="furniture_body">
+              <div class="furniture_items _gallery">
+                <div class="furniture_column">
+                  <div
+                    class="furniture_row row-furniture row-furniture_left-top"
+                  >
+                    <a href="img/furniture/09.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/09.jpg" alt="Image"
+                    /></a>
+                    <a href="img/furniture/01.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/01.jpg" alt="Image"
+                    /></a>
+                    <a href="img/furniture/02.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/02.jpg" alt="Image"
+                    /></a>
+                  </div>
+                  <div
+                    class="furniture_row row-furniture row-furniture_left-bottom"
+                  >
+                    <a href="img/furniture/04.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/04.jpg" alt="Image"
+                    /></a>
+                    <a href="img/furniture/06.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/06.jpg" alt="Image"
+                    /></a>
+                    <a href="img/furniture/07.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/07.jpg" alt="Image"
+                    /></a>
+                  </div>
+                </div>
+                <div class="furniture_column">
+                  <div class="furniture_row row-furniture row-furniture_center">
+                    <a href="img/furniture/03.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/03.jpg" alt="Image"
+                    /></a>
+                  </div>
+                </div>
+                <div class="furniture_column">
+                  <div
+                    class="furniture_row row-furniture row-furniture_right-top"
+                  >
+                    <a href="img/furniture/04.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/04.jpg" alt="Image"
+                    /></a>
+                    <a href="img/furniture/05.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/05.jpg" alt="Image"
+                    /></a>
+                    <a href="img/furniture/01.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/01.jpg" alt="Image"
+                    /></a>
+                  </div>
+                  <div
+                    class="furniture_row row-furniture row-furniture_right-bottom"
+                  >
+                    <a href="img/furniture/08.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/08.jpg" alt="Image"
+                    /></a>
+                    <a href="img/furniture/09.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/09.jpg" alt="Image"
+                    /></a>
+                    <a href="img/furniture/06.jpg" class="row-furniture_item"
+                      ><img src="img/furniture/06.jpg" alt="Image"
+                    /></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer_container _container">
+          <div class="footer_body">
+            <div class="footer_main">
+              <a href="" class="footer_logo _footer-title">Funiro</a>
+              <div class="footer_text">
+                Lorem ipsum dolor sit amet consectetur adipisicing, elit.
+                Provident perferendis error quibusdam soluta ex nemo molestiae.
+                Voluptatibus est voluptas ullam perspiciatis ducimus at in,
+                accusantium consectetur, et nemo, ut ab?
+              </div>
+              <div class="footer_contacts contacts-footer">
+                <a href="" class="contacts-footer_item _icon-location"
+                  >Russia</a
+                >
+                <a
+                  href="tel:+123456789"
+                  class="contacts-footer_item _icon-phone"
+                  >+123456789</a
+                >
+                <a
+                  href="https://www.Funiro.com"
+                  target="_blank"
+                  class="contacts-footer_item"
+                  >www.Funiro.com</a
+                >
+              </div>
+            </div>
+            <div data-spollers="768,max" class="footer_menu menu-footer">
+              <div class="menu-footer_column">
+                <button
+                  type="button"
+                  data-spoller
+                  class="menu-footer_title _footer-title"
+                >
+                  Menu
+                </button>
+                <ul class="menu-footer_list">
+                  <li><a href="" class="menu-footer_link">Products</a></li>
+                  <li><a href="" class="menu-footer_link">Products</a></li>
+                  <li><a href="" class="menu-footer_link">Products</a></li>
+                  <li><a href="" class="menu-footer_link">Products</a></li>
+                  <li><a href="" class="menu-footer_link">Products</a></li>
+                </ul>
+              </div>
+              <div class="menu-footer_column">
+                <button
+                  type="button"
+                  data-spoller
+                  class="menu-footer_title _footer-title"
+                >
+                  Account
+                </button>
+                <ul class="menu-footer_list">
+                  <li><a href="" class="menu-footer_link">My Account</a></li>
+                  <li><a href="" class="menu-footer_link">My Account</a></li>
+                  <li><a href="" class="menu-footer_link">My Account</a></li>
+                  <li><a href="" class="menu-footer_link">My Account</a></li>
+                </ul>
+              </div>
+              <div class="menu-footer_column">
+                <button
+                  type="button"
+                  data-spoller
+                  class="menu-footer_title _footer-title"
+                >
+                  Stay Connected
+                </button>
+                <ul class="menu-footer_list">
+                  <li><a href="" class="menu-footer_link">Faceebook</a></li>
+                  <li><a href="" class="menu-footer_link">Instagramm</a></li>
+                  <li><a href="" class="menu-footer_link">Twitter</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer_subscribe subscribe">
+              <div class="subscribe_title _footer-title">Stay updated</div>
+              <form
+                data-message="subscribe"
+                data-test
+                action="#"
+                class="subscribe_form"
+              >
+                <!-- у фрилансера подключится функционал провеки email по class="input_req_email -->
+                <input
+                  autocomplete="off"
+                  type="text"
+                  name="form[]"
+                  data-error="Ошибка"
+                  data-value="Enter your mail"
+                  class="subscribe_input"
+                />
+                <button
+                  type="submit"
+                  class="subscribe_button _icon-send"
+                ></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- wrapper -->
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/js/adaptive-script.js"></script>
+    <script src="/js/spoller.js"></script>
+    <script src="/js/dynamicAdapt.js"></script>
+    <script src="/js/slider.js"></script>
+    <script src="/js/ibg.js"></script>
+  </body>
+</html>
+
+<!-- 
+стили к json файлу подтянуть,
+
+04-15 картинка не встает 100% и 83% посмотреть разрешение
+
+Используя swiper (8 версии) на момент 27.03.22 контент (.slider-tips__contet) у соседних слайдов при добавлении большего количества текста в заголовок (.slider-tips__title) увеличиваться не будет, ведь слайдер Swiper лучше знает, что у тебя должно работать, а что нет. (Прошу уведомить меня в недостоверности данной информации, если я не прав)
+
+
+
+-->

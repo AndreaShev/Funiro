@@ -1,0 +1,1848 @@
+//обнуление общие пареметры
+@import "nullstyle.scss";
+//адаптивное свойство
+@import "adaptiveValue.scss";
+//галерея @import "lightgallery";
+@import "ibg.scss";
+body {
+font-size: 14px;
+&._lock {
+  overflow: hidden;
+}
+}
+
+
+
+//иконочные шрифты
+@font-face {
+  font-family: 'icons';
+  src:
+    url('../fonts/icons.ttf') format('truetype'),
+    url('../fonts/icons.woff') format('woff'),
+    url('../fonts/icons.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="_icon-"]::before, [class*=" _icon-"]::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+._icon-arrow-down:before {
+  content: "\e900";
+}
+._icon-arrow-link:before {
+  content: "\e901";
+}
+._icon-cart:before {
+  content: "\e902";
+}
+._icon-favorite:before {
+  content: "\e903";
+}
+._icon-location:before {
+  content: "\e904";
+}
+._icon-phone:before {
+  content: "\e905";
+}
+._icon-search:before {
+  content: "\e906";
+}
+._icon-send:before {
+  content: "\e907";
+}
+._icon-share:before {
+  content: "\e908";
+}
+._icon-newspaper:before {
+  content: "\e909";
+} 
+
+//переменные
+$fontSize: 16;
+$minWidth: 320px;
+$maxWidth: 1440;
+$maxWidthContainer: 1270;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+//кнопки 
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 15px;
+  text-align: center;
+  transition: all 0.3s ease 0s;
+  min-height: 48px;
+  &_white {
+color: orange;
+background-color: #fff;
+@media (any-hover:hover){
+  &:hover {
+    color: #fff;
+    background-color: orange;
+}
+}
+  }
+}
+
+
+
+//оболочка
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+//основная сетка
+._container {
+    max-width: $maxWidthContainer + px; 
+    padding: 0px 15px;
+    margin: 0 auto;
+}
+
+
+//стили 
+ .header {
+position: absolute;
+width: 100%;
+top: 0;
+left: 0;
+min-height: 40px;
+@media (max-width: $md3+px){
+      min-height: 5px;
+    }
+    &_scroll {
+.header_wrapper {
+  background-color: rgba(255, 255, 255, 0.8);
+@media (any-hover: hover){
+      &:hover {
+      background-color: rgba(255, 255, 255, 0.9)  
+
+}
+}
+}
+.header_body {
+  min-height: 50px;
+  @media (min-width: $md2+px){
+      min-height: 70px;
+    }
+}
+}
+  &_wrapper {
+transition: background-color 0.3s ease 0s;
+position: fixed; //у фрилансера fixed
+width: 100%;
+top: 0;
+left: 0;
+z-index: 50;
+
+}
+  &_container {}
+  &_body {  
+  transition: min-height 0.3s ease 0s;  
+    display: flex; 
+    align-items: center;
+    padding: 5px 0; 
+    min-height: 125px;
+    position: relative;
+    @media (max-width: $md2+px){
+      min-height: 80px;
+    }
+    @media (max-width: $md3+px){
+      min-height: 50px;
+    }
+  }
+  &_main {
+ display: flex;
+       align-items: center;
+        flex: 0 0 494/1240 * 100%; //считается автоматом в % для адаптива
+    @media(max-width: $md2+px) {
+ flex: 1 1 auto;
+    }
+    }
+  
+  &_logo {
+    color: black;
+  font-weight: 700;
+  font-size: 24px;
+  position: relative;
+  z-index: 5;//чтобы элемент был над меню
+   line-height: 29 / 24 * 100%;//считается автоматом в % для адаптива}
+ }
+    
+  &_menu {}
+  &_search {
+    @include adaptiveValue("padding-right", 32, 15, 1);
+    @media(min-width:$md2+px) {
+flex: 1 1 auto;//возможность увеличиваться
+    }
+}
+  &_actions {}
+
+}//сам поставил
+
+
+.menu {
+ flex: 0 1 420px;
+  &_body {
+@media (max-width: $md3+px){
+  position:fixed;
+  width: 100%;
+  height: 100%;
+  overflow: auto;//для прокрутки меню
+top: 0;
+left: -100%;
+background-color:rgba(128,169,160, 0.8);
+//background-color: #fcf8f3;
+transition: left 0.3s ease 0s;//переход для left
+padding: 70px 15px 30px 15px;
+&::before{//прокладка чтобы шапка при скроле была над элементами и они заезжали под нее
+  content:'';
+  position: fixed;
+  width: 100%;
+  height: 50px;//высота шапки в этом разрешении
+top: 0;
+left: -100%;
+background-color: #fcf8f3;
+transition: left 0.3s ease 0s;
+z-index: 2;
+} 
+&._active{
+left: 0;  
+&::before{
+left: 0;    
+}
+}
+}
+  }
+  &_list {
+@media (min-width: $md3+px){
+ display:flex;//стили на случай если будет много пунктов меню
+flex-wrap: wrap;
+justify-content: space-evenly;
+        }
+  }
+  &_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+flex-wrap: wrap;
+margin: 0px 3px;
+padding: 5px 0px;//отступ безопасности чтобы пункты меню не ломались
+position: relative;
+@media(any-hover:hover){//стили запроса работает на устройствах где есть мышь
+  &:hover{
+.menu_sub-list {
+opacity: 1; 
+ transform: translate(0px, 0px);
+ visibility: visible;
+ pointer-events: auto;
+}
+.menu_arrow{
+  transform: rotate(-180deg);//поворот стрелки
+} 
+.menu_arrow,
+.menu_link {
+color: orange;
+  }
+  }
+}
+@media(min-width: $md3+px){
+ &._hover{
+  .menu_sub-list {
+opacity: 1; 
+ transform: translate(0px, 0px);
+ visibility: visible;
+ pointer-events: auto;
+}
+.menu_arrow{
+  transform: rotate(-180deg);//поворот стрелки
+} 
+.menu_arrow,
+.menu_link {
+color: orange;
+  }
+ }
+}
+@media(max-width: $md3+px){
+ margin: 0px 0px 15px 0px;
+ &:last-child{
+  margin-bottom: 0;
+ }
+}
+}
+  &_link {
+font-weight: 500;
+color:inherit;//ссылке надо сказать чтобы наследовала цвет
+transition: color 0.3s ease 0s;
+@media(max-width: $md3+px){
+ font-size: 24px; 
+ font-weight: 600;
+}
+  }
+
+
+
+  &_arrow {
+margin: 0px 0px 0px 8px;
+transition: all 0.3s ease 0s;
+font-size: 8px;
+@media(max-width: $md3+px){
+ font-size: 14px; 
+&._active{
+  transform: rotate(-100deg);
+} 
+}
+  }
+  &_sub-list {
+    position: relative;
+background-color: orange;
+padding: 15px;
+flex: 1 1 100%;
+@media (min-width: $md3+px){//стили на пк
+opacity: 0; // opacity - устанавливает непрозрачность элемента. Непрозрачность - это степень, в которой содержимое скрывается за элементом, является противоположностью прозрачности.0 - Элемент полностью прозрачен (он становится невидимым).
+ transition: all 0.3s ease 0s; 
+ transform: translate(0px, 10px);
+ visibility: hidden;//visibility -скрывает элемент без изменения разметки документа. Также скрывает строки и столбцы <table> (en-US).
+ min-height: 200px;
+left: 0;
+pointer-events: none;//исключает момент когда мышь убрали а подменю еще светиться
+position: absolute;
+top: 100%;
+z-index: 5;
+        }
+@media (max-width: $md3+px){
+margin: 10px -15px 0px 15px ;
+}
+  }
+  &_sub-item {//пункты
+&:not(:last-child){//отступ вниз для всех объектов кроме последнего
+  margin: 0px 0px 5px 0px;
+    @media (min-width: $md3+px){
+      margin: 0px 0px 10px 0px;
+    }
+}
+  }
+  &_sub-link {
+    color: white;
+    line-height: 120%;
+  @media (any-hover: hover){
+    &:hover {
+      text-decoration: underline;//подчеркивание 
+    }
+  } 
+    @media (min-width: $md3+px){
+font-size: 18px;
+ } 
+  }
+}
+
+.search-form {
+ max-width: 473px;
+ &._active{
+  .search-form_item {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+ .search-form_icon{
+  color: orange;
+ } 
+ } 
+  &_icon {
+    position: relative;
+    z-index: 5;//чтобы объект был над бургером
+    font-size: 22px;
+    color: darkblue;
+    @media (min-width: $md2+px){
+      display: none;
+    }
+  }
+  &_item {
+    background-color: white;
+    display: flex;
+    align-items:center;
+    @media (max-width: $md2+px){
+      box-shadow: 0 0 5px rgba(212, 209, 205, 0.3);
+      position:absolute;
+      width: 100%;
+      left: 0;
+      top: -100%;
+      z-index: 5;
+      opacity: 0;
+       visibility: hidden;
+       transition: all 0.3s ease 0s;
+    }
+  }
+  &_btn {
+    flex: 0 0 45px;
+    height: 45px;
+    font-style: 15px;
+    color: black;
+  }
+  &_input {
+    font-size: 14px;
+    width: 100%;
+    padding: 0px 20px 0px 0px;
+    color: gray;
+    border: 1px black solid;
+  }
+}
+
+.actions-header {
+  position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-flow: column;//для того чтобы элементы выстроились в ряд
+    align-items:center;
+  @include adaptiveValue("gap", 32, 15, 1);
+  &_item {}
+  &_item_favorites {
+color: red;
+        font-size: 24px;
+        transition: color 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover {
+                color: orange;
+            }
+        }
+  }
+  &_item_user {
+    overflow: hidden;
+    border-radius: 50%;
+    @include adaptiveValue("width", 40, 30, 1);
+    @include adaptiveValue("height", 40, 30, 1);
+  }
+}
+.cart-header {
+  &_icon {
+    color: red;
+        font-size: 24px;
+        transition: color 0.3s ease 0s;
+        position: relative;
+        display: block;
+        @media (any-hover: hover){
+            &:hover {
+                color: orange;
+            }
+        }
+        span{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: -10px;
+        right: -10px;
+        border-radius: 50%;
+        background-color:orange;
+        color: #fff;
+        font-size: 12px;
+        }
+
+  }
+
+  &_body {}
+  &_list {}
+}
+
+
+
+.cart-list {
+}
+.icon-menu {//бургер 
+  display: none;
+    @media(max-width: $md3+px){
+       @include adaptiveValue("margin-left", 32, 15, 1);
+        display: block;
+        position: relative;
+        flex: 0 0 30px;
+        height: 18px;
+        cursor: pointer;
+        z-index: 5;
+        span{
+            transition: all 0.3s ease 0;
+            top: calc(50% - 1px);
+            left: 0px;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            &:first-child {
+                top: 0px;
+            }
+            &:last-child {
+                top: auto;
+                bottom: 0px;
+}
+}
+&._active{
+  span{
+  transform: scale(0) translate(0px, -50%);
+&:first-child {  /* анимируем кнопку бургера*/
+top: 50%;
+transform: rotate(-45deg) translate(0px, -50%);
+}
+&:last-child{  /* анимируем кнопку бургера*/
+bottom: 50%;
+transform: rotate(45deg) translate(0px, 50%); 
+  }
+}
+  }
+}
+  }
+
+  .page {
+  padding: 90px 0px 30px 0px;
+}
+
+
+  .page_section {
+padding: 30px;
+max-width: 1200px;
+margin: 0px auto;
+  }
+  .page_section_1 {
+    background-color: #794f45;
+  }
+  .page_section_2 {
+    background-color: #77608d;
+  }
+  .page_section_3 {
+    background-color: #7a956b;
+  }
+  .page_title {
+    font-size: 40px;
+    margin: 0px 0px 20px 0px;
+  }
+  .page_text {
+    font-size: 16px;
+    line-height: 150%;
+  }
+  .page_text p {
+    margin: 0px 0px 20px 0px;
+  }
+
+  .page_sub-title {
+    font-size: 30px;
+    margin: 0px 0px 20px 0px;
+  }
+
+
+
+
+.footer {
+  &_container {}
+  &_body {
+  border-top: 1px solid #d8d8d8;
+display: grid;
+grid-template-columns: 250px 1fr 290px;
+@include adaptiveValue("padding-top", 80, 30, 1);
+@include adaptiveValue("padding-bottom", 60, 30, 1);
+@include adaptiveValue("column-gap", 80, 0, 1);
+
+ @media (max-width: $md1+px) {
+    grid-template-columns: 1fr 290px ;
+    grid-template-rows: auto auto;
+  }
+@media (max-width: $md2+px) {
+   display: block;
+  }
+
+}
+  &_main {
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+     @media (max-width: $md1+px){
+      grid-column: span 2;//занятие 2 колонок
+      @include adaptiveValue("margin-bottom", 40, 30, 1);
+     }
+  }
+  &_logo {
+margin: 0px 0px 16px/24px * 1em 0px; 
+  }
+  &_text {
+color: gray;
+line-height: 150%;
+&:not(:last-child) {
+  margin: 0px 0px 1em 0px;
+}
+  }
+  &_contacts {}
+  &_menu {
+@media (max-width: $md2+px) {
+   @include adaptiveValue("margin-bottom", 40, 30, 1);
+  }
+  }
+  &_subscribe {}
+}
+
+  ._container {}
+  ._footer-title {
+@include adaptiveValue("font-size", 24, 20, 1);
+line-height: 29 / 24 * 100%;
+ color: #000;
+ font-weight: 700;
+  }
+  ._icon-location {}
+  ._icon-phone {}
+  ._icon-send {}
+
+.contacts-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  &_item {
+display: inline-flex;
+  align-items: center;
+  line-height: 150%;
+  color: gray;
+  transition: color 0.3s ease 0s;
+  &::berore{
+margin: 0px 8px 0px 0px;
+}
+&:not(:last-child){
+   @include adaptiveValue("margin-bottom", 16, 10, 1); 
+  }
+@media (any-hover:hover){
+  &:hover {
+    color: orange;
+}
+} 
+}
+}
+.menu-footer {
+   @media (min-width: $md3+px) {
+    display: flex;
+  }
+  &_column {
+ @media (min-width: $md3+px) {
+    flex: 0 1 33.333%;
+  }
+  @media (max-width: $md3+px) {
+    @include adaptiveValue("margin-bottom", 30, 15, 1); 
+  }
+  }
+  &_title {
+cursor: default;
+ @media (min-width: $md3+px) {
+    margin: 0px 0px 16px/24px * 1em 0px;
+  }
+._init &{ //стиль подключается при добавлении родителю класса init
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  @extend ._icon-arrow-down;
+  &::before {
+font-family: Arial;//иконочный шрифт
+font-size: 12px;
+transition: transform 0.3s ease 0s; ;
+  }
+}
+&._active{
+ &::before {
+  transform: rotate(-180deg);
+ } 
+}
+  }
+  &_list {
+li {
+&:not(:last-child) {
+  margin: 0px 0px 15px 0px;
+}
+}
+@media (max-width: $md3+px) {
+    padding: 15px 0px 0px 0px;
+  }
+  }
+  &_link {
+  color: darkgray;
+    transition: color 0.3s ease 0s;
+    line-height: 120%;
+    font-weight: 500;
+    @media (any-hover: hover) {
+  &:hover {
+    color: orange;
+  }
+  }
+}
+}
+
+
+.subscribe {
+  &_title {
+    margin: 0px 0px 16px/24px * 1em 0px;
+  }
+  &_form {
+display: flex;
+position: relative;
+.form_error {
+      position: absolute;
+      top: 100%;
+      margin: 3px 0px 0px 0px;
+      left: 12px;
+      color: red;
+      font-size: 12px;
+    }
+  }
+  &_input {
+    width: 100%;
+padding: 0px 12px;
+background:#f4f5f7;
+color: #828282;
+font-size: 16px;
+  }
+  &_button {
+    flex: 0 0 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color:orange;
+    color:#fff;
+    margin: 0px 0px 0px 4px; 
+ @media (any-hover: hover) {
+  &:hover {
+    background-color: #be825c;
+  }
+  }
+  }
+}
+
+
+
+
+
+
+.page {
+  flex: 1 1 auto;
+  &_main-slider {}
+}
+.main-slider {
+  &_container {
+position: relative;
+@media (min-width: $md2+px) {
+  &::before {
+    content: "";
+    background: #f9f1e7;
+    position: absolute;
+    top:0;
+    width: 100vw;
+    right: 376px;
+    height: 100%;
+  }
+  }
+  }
+  &_body {
+    padding: 140px 0px 0px 0px;
+    position: relative;
+    z-index: 2;
+    @media(max-width: $md2+px ){
+padding: 80px 0px 0px 0px;
+    }
+     @media(max-width: $md3+px ){
+padding: 50px 0px 0px 0px;
+    }
+     @media(min-width: $md2+px ){
+display: flex;
+    } 
+  }
+  &_content {
+align-self: flex-start;
+flex: 0 0 494/1240 * 100%;
+@include adaptiveValue("margin-bottom", 80, 15, 1); 
+@media(max-width: $md2+px){
+  margin: 0px -15px;
+  }
+  }
+
+  &_slider {
+    flex: 1 1 auto;
+    min-width: 0;//лечим слайдер
+    align-self: flex-end;
+    @media(min-width: $md2+px ){
+padding: 0px 0px 0px 32px;
+    }
+  }
+}
+
+  ._container {}
+  ._icon-arrow-down {}
+  ._swiper {}
+  ._ibg {}
+  ._icon-arrow-link {}
+
+.content-main {
+  position: relative;
+  z-index: 5;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: rgba(255, 255, 255, 0.72);
+  @include adaptiveValue("padding-top", 60, 15, 1); 
+  @include adaptiveValue("padding-bottom", 60, 15, 1); 
+   @media(min-width: $md2+px){
+ @include adaptiveValue("padding", 60, 1, 1); 
+  background: rgba(255, 255, 255, 0.9);
+   @supports ((-webkit-backdrop-filter: blur (31px)) or (backdrop-filter: blur(31px))) {
+ background: rgba(255, 255, 255, 0.72);
+ background-filter: blur(31px);
+   }
+  }
+  &_title {
+@include adaptiveValue("font-size", 56, 24, 1); 
+font-weight: 700;
+line-height: 120%;
+&:not(:last-child){
+  margin: 0px 0px 16px/56px * 1em 0px;
+}
+  }
+  &_text {
+  @include adaptiveValue("font-size", 20, 16, 1);
+  color: gray;
+  font-weight: 500;
+  line-height: 150%;
+  &:not(:last-child){
+  margin: 0px 0px 48px/20px * 1em 0px;
+}
+}
+  &_button {
+    font-weight: 600;
+ @include adaptiveValue("min-height", 78, 45, 1);
+ @include adaptiveValue("font-size", 20, 16, 1);
+ background-color: orange;
+ color: #fff;
+ width: 100%;
+ @media (any-hover:hover){
+  &:hover {
+    background-color: #966749;
+  }
+ } 
+  }
+}
+.slider-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+@media(max-width: $md2+px){
+align-items: stretch;
+flex-direction: column-reverse;
+}
+  &_controls {
+align-self: stretch;//значение по умолчанию резиновость
+margin: 0px 0px 20px 0px;
+ @media(max-width: $md2+px){
+  margin: 10px 0px 20px 0px;
+  }
+  }
+  &_body {
+       overflow: visible;
+    @media(min-width: $md2+px ){
+       @include adaptiveValue("width", 934, 290, 1);//устанавливаем в ручную ширину слайда
+    }
+    @media(max-width: $md2+px ){
+  margin: 0px -15px;
+  }
+  }
+  &_slide {
+    position: relative;
+  }
+  &_image{
+padding: 0px 0px 1.1% 0px;//процент подобрал
+  }
+  &_content {
+    min-width: 295px;
+    max-height: 300px;
+    overflow: auto;
+    //position: absolute;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("padding", 24, 15, 1);
+    background: rgba(255, 255, 255, 0.9);
+ @media(min-width: $md3+px ){
+position: absolute;
+min-width: 350px;
+@include adaptiveValue("right", 40, 0, 1);
+@include adaptiveValue("bottom", 40, 0, 1);
+    }//если браузер поддерживает background-filter
+     @supports ((-webkit-backdrop-filter: blur (31px)) or (backdrop-filter: blur(31px))) {
+ background: rgba(255, 255, 255, 0.72);
+ background-filter: blur(31px);
+  }
+  }
+  &_title {
+   @include adaptiveValue("font-size", 28, 22, 1);
+   font-weight: 600;
+   line-height: 120%;
+&:not(:last-child){
+   margin: 0px 0px 4px/28px *1em 0px;
+  }
+  }
+  &_text {
+   line-height: 150%;
+   color: gray;
+    &:not(:last-child){//для всех объектов кроме последнего
+   margin: 0px 0px 8px/16px *1em 0px;
+  }
+}
+
+  &_price {
+    display: flex;
+    flex-direction: row-reverse;
+    line-height: 150%;
+    align-items: center;
+    font-weight: 600;
+    justify-content: space-between;
+    @include adaptiveValue("font-size", 20, 16, 1);
+    &::before {
+      margin: 0px 0px 0px 10px;
+      font-size: 12px;
+    }
+  }
+}
+.controls-slider-main {
+  display: flex;
+//  justify-content: space-between;
+align-items: center;
+  &_dotts {
+    flex: 1 1 auto;
+    @media(min-width: $md2+px){
+  padding: 0px 20px 0px 0px;
+  }
+    @media(max-width: $md2+px ){
+  justify-content: center;
+  }
+  }
+  &_arrows {
+  @media(max-width: $md2+px ){
+  display: none;
+  }
+}
+}
+.slider {
+  &-arrows {
+  display: grid;
+  grid-template-columns: repeat(2, 48px);
+  column-gap: 8px;
+}
+  &_image {
+
+  }
+}
+.slider-arrows{
+  display: grid;
+  grid-template-columns: repeat(2, 48px);
+  column-gap: 8px;
+}
+
+.slider-arrow {
+  pointer-events: auto;
+  border-radius: 50%;
+  height: 48px;
+  background-color: rgba (232, 159, 133, 0.3);
+  color: orange;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  &_prev {
+    &::before {
+      display: inline-block;//для работы transform нужно display: inline-block; или display: block;
+      transform: rotate(90deg);
+    }
+  }
+  &_next {
+&::before {
+  display: inline-block;
+      transform: rotate(-90deg);
+    }
+  }
+  @media (any-hover:hover){
+  &:hover {
+    color: #fff;
+    background-color: orange;
+
+  }
+}
+&_white {
+box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
+background-color: #fff;
+@media (any-hover:hover){
+  &:hover {
+    color: #fff;
+    background-color: orange;
+
+}
+}
+}
+}
+
+.swiper-pagination-bullets {
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.swiper-pagination-bullet{
+cursor: pointer;
+flex: 0 0 27px;
+height: 27px;
+position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px 0px;
+  &:not(:last-child){
+  margin-right: 12px;
+}
+&::after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  background-color: #d8d8d8;
+  border-radius: 50%;
+  transition: background-color 0.3s ease 0s;
+}
+&::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid orange;
+  transition: transform 0.3s ease 0s;
+transform: scale(0);
+}
+}
+.swiper-pagination-bullet-active{
+&::after {
+  background-color: orange;
+}
+ &::before { 
+  transform: scale(1);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.advantages {
+  @include adaptiveValue("padding-top", 88, 30, 1);
+    @include adaptiveValue("padding-bottom", 88, 30, 1);
+  &_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &_item {
+    display: inline-grid;
+    padding: 15px 0;
+    grid-template: auto auto / 85px 1fr;
+    @media(max-width: $md2+px ){
+  min-width: 280px;
+  }
+  @media(max-width: $md3+px ){
+ grid-template: auto auto / auto 1fr;
+  }
+  }
+
+  &_icon {
+text-align: center;
+align-self: center;
+grid-row: span 2;
+@media(max-width: $md3+px ){
+  padding: 0px 15px 0px 0px;
+  }
+  }
+  &_title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 150%;
+    margin: 0px 0px 2px/18px * 1em 0px;
+  }
+  &_text {
+line-height: 150%;
+color: gray;
+  }
+}
+
+  ._container {}
+
+
+
+
+
+
+.page {
+  &_products {}
+}
+.products {
+  @include adaptiveValue("padding-bottom", 44, 30, 1);
+  &_container {}
+  &_title {
+margin: 0px 0px 32px/40px * 1em 0px;
+  }
+  &_items {//грид контейнер для товаров
+display: grid;
+gap: 32px;
+grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));//товары по всему грид кониейнеру
+  }
+  &_item {}
+
+ &_footer {
+  padding: 32px 0px 0px 0px;
+  text-align: center;
+ }
+ &_more {
+  border: 1px solid orange;
+  min-width: 245px;
+  &._hold {
+        opacity: 0.4;
+        cursor: default;
+    }  
+ }
+}
+ 
+  ._container {}
+  ._title {
+ @include adaptiveValue("font-size", 40, 24, 1);
+ font-weight: 700;
+ line-height: 120%;
+ text-align: center;
+  }
+
+//полет картинки
+._flyImage._ibg {
+    opacity: 1;//непрозрачность элемента
+    position: fixed;
+    z-index: 100;
+    transition: all 1s ease 0s;
+}
+  
+  ._ibg {}
+  ._icon-share {}
+  ._icon-favorite {}
+
+.item-product {//карточка товара
+  background: #f4f5f7;
+  display: flex;
+  flex-direction: column;
+position: relative;
+@media (any-hover:hover) {
+  &:hover {
+    .item-product_actions{
+ opacity: 1;
+visibility: visible;
+}
+}
+}
+  &_labels {//коробочка с лейблами
+position: absolute;
+z-index: 2;
+display: flex;
+  flex-direction: column;
+   @include adaptiveValue("right", 24, 10, 1);
+    @include adaptiveValue("top", 24, 10, 1);
+  }
+  &_label {
+    flex: 0 0 48px;
+    width: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+    &:not(:last-child){//кроме последнего элемента
+  margin: 0px 0px 10px 0px;
+}
+    &_sale {
+    background: #e97171;
+  }
+   &_new {
+    background: #2ec1ac;
+  }
+  }
+  &_image {
+padding: 0px 0px 100% 0px;// //добавил свойства для адаптивности картинок  у фрилансера только padding: 0px 0px 301px/285px * 100% 0px 
+overflow: hidden;
+position: relative;
+  }
+  &_body {
+flex: 1 1 auto;//позволяем флекс элементу увеличиваться чтобы цена в карточке всегда была внизу
+padding: 16px 16px 30px 16px; 
+display: flex;
+flex-direction: column;
+  }
+  &_content {
+flex: 1 1 auto;
+  }
+  &_title {
+@include adaptiveValue("font-size", 24, 20, 1);
+font-weight: 600;
+line-height: 120%;
+margin: 0px 0px 8px/24px * 1em 0px; 
+  }
+  &_text {
+    color: gray;
+line-height: 150%;
+margin: 0px 0px 8px/24px * 1em 0px;
+  }
+  &_prices {
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+line-height: 150%;
+  }
+  &_price {
+   @include adaptiveValue("font-size", 20, 16, 1); 
+   font-weight: 600;
+  &_old {
+    @include adaptiveValue("font-size", 16, 14, 1); 
+   font-weight: normal;
+   margin: 0px 0px 0px 16px;
+   color: #b0b0b0;
+   text-decoration: line-through;
+  }
+}
+  &_actions {
+@media (any-hover:none) {//устройтва которые не позволяют навести курсор на объект
+padding: 15px 0px 0px 0px;
+}    
+@media (any-hover:hover){
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease 0s;
+ background-color: rgba(58, 58, 58, 0.74);
+ z-index: 3;
+}
+  }
+}
+
+.item-product_image img{//добавил для адаптивности картинок
+width: 100%;
+height: 100%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+.actions-product {
+  &_body {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+  }
+  &_button {
+flex: 1 1 100%;
+&:not(:last-child){
+  margin: 0px 0px 24px 0px;
+}
+  }
+  &_link {
+display: flex;
+align-items: center;
+color: inherit;
+font-weight: 600;
+transition: color 0.3s ease 0s;
+&::before {
+margin: 0px 10px 0px 0px; 
+font-size: 16px;
+   }
+   @media (any-hover:hover){
+   color: #fff;
+  &:hover {
+    color: orange;
+}
+}
+}
+}
+
+
+
+
+
+
+
+
+
+.cart-header_body{
+    background: #f4f5f7;
+    border: 1px solid #e0e0e0;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    padding: 15px;
+    width: 300px;
+    z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease 0s;
+    transform: translate(0px, 20px);
+    ._active &{
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0px, 0px);
+    }
+    @media (max-width: $md2+px) {//$md2+px в видео
+        top: 50px;
+    }
+    @media (max-width: $md3+px){//$md3+px в видео
+position: fixed;
+top: 50px;
+left: 0;
+width: 100%;
+}
+}
+
+.cart-list{
+    overflow: auto;
+    max-height: 200px;
+}
+.cart-list_image{
+    flex: 0 0 100px;
+    height: 100px;
+    position: relative;
+    //overflow: hidden; //я добавил для адаптива
+}
+.cart-list_image img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
+
+}
+
+.cart-list_body{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 0px 0px 10px;
+}
+.cart-list_title{
+    color: inherit;
+    font-weight: 600;
+    transition: color 0.3s ease 0s;
+    margin: 0px 0px 5px/16px * 1em 0px;
+    &:hover{
+        color: orange;
+    }
+}
+
+.cart-list_quantity{
+    font-size: 14px;
+    margin: 0px 0px 5px/14px * 1em 0px;
+}
+.cart-list_delele{
+color: red;
+font-size: 14px;
+@media (any-hover: hover){
+  &:hover{
+    text-decoration: underline;
+}   
+}
+}
+.cart-list_item {
+    display: flex;
+    align-items: flex-start;
+    &:not(:last-child){
+        margin: 0px 0px 15px 0px;
+    }
+}
+
+.actions-product_button{
+    flex: 1 1 100%;
+    &:not(:last-child){
+margin: 0px 0px 24px 0px;       
+    }
+    &._hold {
+        opacity: 0.2;
+        cursor: default;
+    }
+}
+
+
+
+
+
+.rooms {
+  background: #f3f8f3;
+@include adaptiveValue("padding-top", 44, 30, 1);
+@include adaptiveValue("padding-bottom", 44, 30, 1);
+  &_container { //ограничивающий контейнер
+   @media (min-width: $md2+px) {
+   display: flex;
+   } 
+  }
+  &_body {
+flex: 0 0 465 / 1240 * 100%; //гибкое задание размеров в % с помощью дележки 
+position: relative;
+z-index: 5;
+ align-self: center;
+ @media (min-width: $md2+px) {
+   @include adaptiveValue("padding-right", 80, 30, 1);
+   }
+   @media (max-width: $md2+px) {
+margin: 0px 0px 30px 0px;   
+   } 
+ }
+
+  &_title {
+     &:not(:last-child) {
+margin: 0px 0px 8px/40px * 1em 0px;     
+    }
+text-align: left;
+  }
+  &_text {
+line-height: 150%;
+font-weight: 500;
+ &:not(:last-child) {
+margin: 0px 0px 24px 0px;     
+    }
+  }
+  &_button {
+background: orange;
+color: #fff;
+min-width: 180px;
+@media (any-hover: hover) {
+  &:hover{
+    background-color: #8d6146;
+}   
+}
+  }
+  &_slider {
+    flex: 1 1 auto;//разрешаем увеличиваться
+    min-width: 0;//свойство чтобы слайжер не болел
+ align-self: flex-start;//прибиваем слайдер сверху
+ @media (max-width: $md4+px) {
+  margin: 0px -15px;
+ }
+  }
+}
+
+.slider-rooms {
+  position: relative;
+  &_body {
+overflow: visible;
+position: relative;
+&::before { //накрываем слайды сверху с левой стороны как нужно по макету (метод покрывала)
+  content:  "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+  left: 0;
+  background-color: #fcf8f3;
+  z-index: 2;
+  transform: translate(-100%, 0px);
+}
+  }
+  &_slide {
+    width: 372px;
+    position: relative;
+    overflow: hidden;
+//@include adaptiveValue("min-height", 585, 400, 1);
+ &.swiper-slide-active {
+.slider-rooms_image {
+  height: 100%; 
+}
+ }
+
+@media (max-width: $md4+px) {
+width: 100%;
+} 
+  }
+  &_image {
+transition: height 0.8s ease 0s;
+height: 100%;
+position: relative;
+@media (min-width: $md3+px) {
+  height: 83%;//высчитали по макету
+ }
+  }
+  &_content {
+    position: absolute;
+    color: inherit;//т.к. это ссылка цвет надо наследовать
+    max-width: 240px;
+    @include adaptiveValue("left", 24, 15, 1);
+    @include adaptiveValue("bottom", 24, 15, 1);
+    @include adaptiveValue("padding", 32, 15, 1);
+  background: rgba(255, 255, 255, 0.9);
+   @supports ((-webkit-backdrop-filter: blur (31px)) or (backdrop-filter: blur(31px))) {
+ background: rgba(255, 255, 255, 0.72);
+ background-filter: blur(31px);
+  }
+&::before {//стрелка 
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(100%, 0px);
+  width: 48px;
+  height: 48px;
+  background-color: orange;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}   
+}
+  &_label { }
+  &_title {
+font-weight: 600;
+@include adaptiveValue("font-size", 28, 24, 1);
+  }
+  &_arrows {
+pointer-events: none;
+position: absolute;
+top: 50%;
+transform: translate(0px, -50%);
+width: calc(100% - 48px);
+left: 24px;
+z-index: 5;
+justify-content: space-between;
+@media (min-width: $md1+px) {
+  left: -24px;
+  width: calc(100% + 48px);//добавляем ширину стрелки
+}
+  }
+  &_dotts {
+@media (min-width: $md3+px) {
+  position: absolute;
+  z-index: 5;//добавил сам для функциональности
+  bottom: 30px;
+  width: 100%;
+  left: 396px;//сумм ширины слайда 372px + отступ между слайдами 24px 
+ }
+ @media (max-width: $md3+px) {
+justify-content:center;
+padding: 15px 0px 0px 0px;
+ }
+  }
+}
+
+.label-slider {
+  display: grid;
+    color: gray;
+    gap: 8px;
+    align-items: center;
+    justify-content: start;
+    grid-template-columns: auto 27px auto;
+  &:not(:last-child) {
+margin: 0px 0px 8px 0px;     
+    }
+  &_number {}
+  &_line {
+height: 1px;
+background-color: gray;
+  }
+  &_text {}
+}
+
+.swiper-slide-next{
+height: 83%;
+transition: height 0.8s ease; 
+}
+
+/*.swiper-slide-active .container {
+transform: scale(1.2);
+transition: transform .2s ease;
+}
+
+.swiper-slide .container {
+transform: scale(1);
+transition: transform .2s ease;
+}
+.slider-rooms_image{
+    //flex: 0 0 100px;
+    height: 100%;
+    position: relative;
+    //overflow: hidden; //я добавил для адаптива
+}
+.slider-rooms_image img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
+
+}*/
+
+
+.tips {
+@include adaptiveValue("padding-top", 44, 30, 1);
+@include adaptiveValue("padding-bottom", 44, 30, 1);
+  &_container {}
+  &_title {
+   // margin: 0px 0px 32px/40px * 1em 0px; 
+  }
+  &_slider {}
+}
+
+.slider-tips {
+  position: relative;
+  &_body {
+@include adaptiveValue("margin-left", -32, -15, 1);//решение проблемы с тенями отдаигаем и сдвигаем отступы
+@include adaptiveValue("margin-right", -32, -15, 1);
+@include adaptiveValue("padding", 32, 15, 1);
+
+  }
+  &_slide {
+//height: auto; //совет с ютуба    
+display: flex;
+flex-direction: column;
+transition: box-shadow 0.3s ease 0s;
+@media (any-hover: hover) {
+  &:hover{
+    box-shadow: 0 0 32px rgba(97, 97, 97, 0.2);//тень
+}   
+}
+  }
+  &_image {
+padding: 0px 0px 5% 0px; //процент поправил у фрилансера padding: 0px 0px 251/391 * 100% 0px
+  }
+  &_content {
+display: flex;
+flex-direction: column;
+padding: 15px;
+flex: 1 1 auto;
+align-items: flex-start;
+  }
+  &_title {
+    flex: 1 1 auto;
+    color: inherit;
+    font-weight: 600;
+    line-height: 120%;
+@include adaptiveValue("font-size", 24, 18, 1);
+transition: color 0.3s ease 0s;
+&:not(:last-child) {
+margin: 0px 0px 8px/24px * 1em 0px;     
+    }
+@media (any-hover: hover) {
+  &:hover{
+    color: orange;//при наведении цвет меняется на оранжевый
+}   
+}
+  }
+  &_text {
+color: gray;
+font-size: 14px;
+line-height: 150%;
+  }
+  &_dotts {
+@include adaptiveValue("padding-top", 8, 0, 1);
+justify-content: center;
+  }
+  &_arrows {
+pointer-events: none;
+position: absolute;
+top: 50%;
+transform: translate(0px, -50%);
+width: calc(100% - 48px);
+left: 24px;
+z-index: 5;
+justify-content: space-between;
+@media (min-width: $md1+px) {
+  left: -24px;
+  width: calc(100% + 48px);
+   } 
+ @media (max-width: $md3+px) {
+  display: none;//на маленьком разрешении убираем стрелки
+   } 
+  }
+}
+.slider-arrows {
+}
+.slider-arrow {
+pointer-events: auto;
+border-radius: 90%;
+height: 48px;
+background-color: rgba(232, 150, 113, 0.1);
+color: orange;
+font-size: 12px;
+cursor: pointer;
+transition: all 0.3s ease 0s ;
+  &_white {}
+  &_prev {
+&::before {
+  transform: rotate(90deg);
+}
+  }
+  &_next {}
+}
+
+
+
+
+.furniture {
+  @include adaptiveValue("padding-bottom", 85, 40, 1);
+  &_container {}
+  &_label {
+    text-align: center;
+    color: gray;
+    line-height: 150%;
+     @include adaptiveValue("font-size", 20, 16, 1);
+  &:not(:last-child) {
+margin: 0px 0px 8px/20px * 1em 0px;     
+    }
+  }
+  &_title {
+margin: 0px 0px 32px/40px * 1em 0px;  
+  }
+  &_body {
+position: relative;
+@media (any-hover: none) { //для тач устройств
+    overflow: auto; //горизонтальный скролл
+ -webkit-overflow-scrolling: touch;
+}
+  }
+  &_items {
+display: grid;
+grid-template-columns: auto;
+grid-auto-flow: column;//по умолчанию будет наращиваться много колонок
+ align-items: center;
+ gap: 16px;
+ @media (any-hover: hover) {//для не тач устройств
+justify-content: center;
+ }
+  }
+  &_column {
+display: flex;
+flex-wrap: wrap;//позволяем заламываться
+ align-items: center;
+ margin: 0px -8px;
+ &:first-child {
+  justify-content: flex-end;
+ }
+  }
+  &_row {
+display: inline-grid;
+position: 0px 8px;
+gap: 16px;
+grid-template-columns: auto;
+grid-auto-flow: column;
+&:not(:last-child) {
+margin: 0px 0px 16px 0px;     
+    }
+  }
+}
+
+.row-furniture {
+  &_left-top {
+justify-content: end;
+align-items: end;
+  }
+  
+  &_left-bottom {
+justify-content: end;
+align-items: start;
+  }
+  &_center {
+display: block;
+  }
+  &_right-top {
+align-items: end;
+  }
+  &_right-bottom {
+align-items: start;
+  }
+&_item {
+@media (any-hover: hover) {
+img {
+  transition: all 0.8s ease 0s;
+  filter: grayscale(1);
+}
+&:hover {
+img {
+  filter: grayscale(0);
+}
+}
+}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+//03-35 из исходника в итоговый джейсон
+//04:46:19 подключение файла lightgallery
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
+
+
+
+/* Многострочный комментарий 
+совет из инета проблема со слайдером
+    margin-left, margin-right убрать у .swiper
+
+.slider-tips_slide {}
+height: auto; } //совет с ютуба 
+устраняет ошибку 8 версии у соседних слайдов при добавлении 
+большого количества текста в заголовок (.slider-tips_title)
+увеличиваться не будет т.к. swiper решает что должно работать а что нет
+*/
